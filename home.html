@@ -22,18 +22,7 @@
 		
 
 
-            testdata=[
-            {name:"aaa",
-            fromName:"上海",
-            toName:"东莞",
-            coords:[[121.4648,31.2891],[113.8953,22.901]]
-            },
-            {name:"aaa",
-            fromName:"东莞",
-            toName:"上海",
-            coords:[[113.8953,22.901],[121.4648,31.2891]]
-            }
-            ];
+        
             
             echarts.registerMap('china', geoJson);
         
@@ -77,7 +66,7 @@
                     
                         locSet.push({
                             name:key,
-                            value:geoCoordMap[key]
+                            value:geoCoordMap[key].concat(from_map[key].length)
                         });
                    
                 }else{
@@ -174,7 +163,7 @@
                         }
                     },
                     symbolSize: function (val) {
-                        return val[2] / 8;
+                        return val[2] ;
                     },
                     itemStyle: {
                         normal: {
@@ -182,12 +171,7 @@
                         }
                     },
                     data:locSet
-                    // data: item[1].map(function (dataItem) {
-                    //     return {
-                    //         name: dataItem[1].name,
-                    //         value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-                    //     };
-                    // })
+  
                 }
                 );
   
@@ -195,11 +179,12 @@
             option = {
                 backgroundColor: '#404a59',
                 title : {
-                    text: '我们从哪来',
-                    subtext: '聚起来是一团火',
+                    text: '聚是一团火',
+                    top:'10%' ,
                     left: 'center',
                     textStyle : {
-                        color: '#fff'
+                        color: '#fff',
+                        fontSize:24
                     }
                 },
                 tooltip : {
@@ -235,8 +220,7 @@
                 },
                 series: series
             };			
-	           console.log(series)
-           
+	          
             myChart.setOption(option);
        </script>
    </body>
