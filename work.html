@@ -75,9 +75,9 @@
             // }
             
             for(var key in to_map){
-                if (key=='长沙'){
-                    continue;
-                }
+                // if (key=='长沙'){
+                //     continue;
+                // }
 
                 if(key in geoCoordMap){
                     seriesData.push(
@@ -155,12 +155,21 @@
                     rippleEffect: {
                         brushType: 'stroke'
                     },
+                    tooltip:{
+                        formatter:function(params){
+                            return to_map[params.name]
+                        }
+                    },
                     label: {
                         normal: {
                             fontSize:16,
                             show: true,
                             position: 'right',
-                            formatter: '{b}'
+                             formatter: '{b}'
+                            // formatter:function(params){
+                            //     return to_map[params.name]
+                            //     console.log(params)
+                            // }
                         }
                     },
                     symbolSize: function (val) {
@@ -173,12 +182,7 @@
                         }
                     },
                     data:locSet
-                    // data: item[1].map(function (dataItem) {
-                    //     return {
-                    //         name: dataItem[1].name,
-                    //         value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-                    //     };
-                    // })
+                   
                 }
                 );
   
@@ -187,7 +191,7 @@
                 backgroundColor: '#404a59',
                 title : {
                     text: '散是满天星',
-                    top:10%',
+                    top:'10%',
                     left: 'center',
                     textStyle : {
                         color: '#fff',

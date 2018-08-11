@@ -155,6 +155,11 @@
                     rippleEffect: {
                         brushType: 'stroke'
                     },
+                    tooltip:{
+                        formatter:function(params){
+                            return to_map[params.name]
+                        }
+                    },
                     label: {
                         normal: {
                             show: true,
